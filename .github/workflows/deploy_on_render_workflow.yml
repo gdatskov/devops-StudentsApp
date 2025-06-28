@@ -1,0 +1,37 @@
+# Render workflow
+
+name: Build and Test StudentsApp
+
+on:
+   push:
+     branches: [ "main" ]
+   pull_request:
+     branches: [ "main" ]
+   workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+    - name: Use Node.js 22.x            
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22.x
+    - name: Build (Install dependencies)
+      run: npm ci
+    - name: Run Integration tests
+      run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build_and_test
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.RENDER_TOKEN }}
+          api-key: ${{ secrets.SERVICE_ID }}
+          wait-for-success: true
