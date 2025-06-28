@@ -4,10 +4,10 @@
 name: Build and Test StudentsApp
 
 on:
-  push:
-    branches: [ "main" ] # Triggers the workflow on push to the main branch
-  pull_request:
-    branches: [ "main" ] # Triggers the workflow on pull requests to the main branch
+  # push:
+    # branches: [ "main" ] # Triggers the workflow on push to the main branch
+  # pull_request:
+    # branches: [ "main" ] # Triggers the workflow on pull requests to the main branch
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs: # Define the jobs that will run in this workflow
