@@ -1,6 +1,6 @@
 # Render workflow
 
-name: Build and Test StudentsApp
+name: Build and Test and Deploy
 
 on:
    push:
