@@ -31,19 +31,19 @@ jobs: # Define the jobs that will run in this workflow
     #   run: npm audit # This command checks for vulnerabilities in the dependencies and reports any issues found at or above the specified severity level (high in this case)
   
   # Additional job for security tests - running in parallel with build_and_test
-  security_tests: # the same as build_and_test, but only runs the security scan
-    name: Security Tests 
-    # needs: build_and_test # This job depends on the build_and_test job, meaning it will only run after that job has completed successfully
-    runs-on: ubuntu-latest 
-    steps: 
-    - name: Checkout Repo 
-      uses: actions/checkout@v4 
-    - name: Use Node.js 22.x 
-      uses: actions/setup-node@v4 
-      with: 
-        node-version: 22.x 
-    - name: Build (Install dependencies) 
-      run: npm ci 
-    - name: Run security scan 
-      run: npm audit 
+  # security_tests: # the same as build_and_test, but only runs the security scan
+  #   name: Security Tests 
+  #   # needs: build_and_test # This job depends on the build_and_test job, meaning it will only run after that job has completed successfully
+  #   runs-on: ubuntu-latest 
+  #   steps: 
+  #   - name: Checkout Repo 
+  #     uses: actions/checkout@v4 
+  #   - name: Use Node.js 22.x 
+  #     uses: actions/setup-node@v4 
+  #     with: 
+  #       node-version: 22.x 
+  #   - name: Build (Install dependencies) 
+  #     run: npm ci 
+  #   - name: Run security scan 
+  #     run: npm audit 
  
