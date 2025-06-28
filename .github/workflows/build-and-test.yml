@@ -20,6 +20,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 22.x
-        cache: 'npm'
-    - run: npm ci
-    - run: npm test
+    - name: Build (Install dependencies)
+      run: npm ci
+    - name: Test
+      run: npm test
